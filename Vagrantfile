@@ -4,8 +4,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Install latest chef via omnibus plugin.
   config.omnibus.chef_version = :latest
 
-  config.vm.box = "Ubuntu 14.10 x32"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-i386-vagrant-disk1.box"
+  config.vm.box = "Ubuntu 15.04 x64"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box"
 
   config.vm.network :forwarded_port, host: 4570, guest: 4570
   #config.vm.network :forwarded_port, host: 8080, guest: 8080
@@ -23,7 +23,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
     config.vm.provision "chef_solo" do |chef|
+      chef.add_recipe "apt"
+      chef.add_recipe "git"
       chef.add_recipe "nginx"
+      chef.add_recipe "mariadb"
+      chef.add_recipe "phing"
+      chef.add_recipe "drush"
     end
 
 end
