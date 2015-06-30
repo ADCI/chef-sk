@@ -4,8 +4,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Install latest chef via omnibus plugin.
   config.omnibus.chef_version = :latest
 
-  config.vm.box = "Debian Jessie x64"
-  config.vm.box_url = "https://github.com/holms/vagrant-jessie-box/releases/download/Jessie-v0.1/Debian-jessie-amd64-netboot.box"
+  # Debian Jessie x64
+  config.vm.box = "debian/jessie64"
 
   config.vm.network :forwarded_port, host: 4567, guest: 4567
   #config.vm.network :forwarded_port, host: 8080, guest: 8080
