@@ -1,13 +1,13 @@
-VAGRANTFILE_API_VERSION = "2"
+VAGRANT_API_VERSION = 2
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
   # Install latest chef via omnibus plugin.
   config.omnibus.chef_version = :latest
 
   # Debian Jessie x64
   config.vm.box = "debian/jessie64"
 
-  config.vm.network :forwarded_port, host: 4567, guest: 4567
+  config.vm.network :forwarded_port, host: 4567, guest: 80
   #config.vm.network :forwarded_port, host: 8080, guest: 8080
 
   #config.vm.network "private_network", ip: "192.168.33.10"
@@ -31,18 +31,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "phing"
     chef.add_recipe "drush"
     chef.add_recipe "phpapp"
-
-    chef.json = {
-      "project" => {
-        "sites" => {
-          "site" => {
-            "port" => 4567,
-            "dir" => "/var/www/site"
-          },
-        },
-      }
-    }
-
   end
 
 end
