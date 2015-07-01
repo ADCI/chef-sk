@@ -2,7 +2,7 @@
 # Cookbook Name:: phpapp
 # Recipe:: default
 #
-# Copyright 2013, ADCI
+# Copyright 2015, ADCI
 #
 # All rights reserved - Do Not Redistribute
 #
