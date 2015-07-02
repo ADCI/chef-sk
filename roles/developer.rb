@@ -3,6 +3,14 @@ description "Default settings for developer variant."
 
 default_attributes(
 
+    "vsftpd" => {
+        "allowed" => ["vagrant"],
+        "chroot" => ["vagrant"],
+        "config" => {
+            "listen_address" => "172.16.0.2",
+        }
+    },
+
     "nginx" => {
         "default_site_enabled" => FALSE,
 
@@ -47,6 +55,7 @@ default_attributes(
 run_list(
     "recipe[apt]",
     "recipe[git]",
+    "recipe[vsftpd]",
     "recipe[php]",
     "recipe[php::module_gd]",
     "recipe[php::module_mysql]",

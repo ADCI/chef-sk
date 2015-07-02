@@ -2,6 +2,7 @@ source "https://supermarket.chef.io"
 
 cookbook "apt"
 cookbook "git"
+cookbook "vsftpd", git: "https://github.com/TheSerapher/chef-vsftpd.git"
 cookbook "nginx"
 cookbook "php"
 cookbook "php-fpm"
