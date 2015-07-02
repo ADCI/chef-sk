@@ -8,29 +8,21 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   config.vm.box = "debian/jessie64"
 
   config.vm.network :forwarded_port, host: 4567, guest: 80
-  #config.vm.network :forwarded_port, host: 8080, guest: 8080
 
   #config.vm.network "private_network", ip: "192.168.33.10"
   #config.vm.network "public_network", ip: "10.1.1.20"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 1024
+
     # Improve network perfomance
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-    #vb.customize ["modifyvm", :id, "--ioapic", "on"]
-    #vb.customize ["modifyvm", :id, "--cpuexecutioncap", "100"]
   end
 
   config.vm.provision "chef_solo" do |chef|
-    chef.add_recipe "apt"
-    chef.add_recipe "git"
-    chef.add_recipe "php5-fpm::install"
-    chef.add_recipe "nginx"
-    chef.add_recipe "mariadb"
-    chef.add_recipe "phing"
-    chef.add_recipe "drush"
-    chef.add_recipe "phpapp"
+    chef.roles_path = "roles"
+    chef.add_role("developer")
   end
 
 end

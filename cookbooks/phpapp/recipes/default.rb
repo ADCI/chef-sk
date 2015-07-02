@@ -9,25 +9,36 @@
 
 require 'fileutils'
 
+def create_folder(path)
+  Dir.mkdir(path) unless File.exists?(path)
+end
+
+# Create php.ini file for php-fpm bases on php cookbook
+template "php.ini" do
+  path "#{node['php-fpm']['conf_dir']}/php.ini"
+  source "php.ini.erb"
+  cookbook "php"
+  variables(:directives => node['php']['directives'])
+  notifies :reload, 'service[php-fpm]'
+end
 
 # Create directory /var/www.
-Dir.mkdir("/var/www") unless File.exists?("/var/www")
+create_folder('/var/www')
 FileUtils.chown(ENV['SSH_USER'], ENV['SSH_USER'], "/var/www")
 
 # Delete old config files.
-Dir.glob("/etc/nginx/sites-enabled/*.conf").each { |file| File.delete(file) }
-Dir.glob("/etc/nginx/sites-available/*.conf").each { |file| File.delete(file) }
+Dir.glob('/etc/nginx/sites-enabled/*.conf').each { |file| File.delete(file) }
+Dir.glob('/etc/nginx/sites-available/*.conf').each { |file| File.delete(file) }
 
 # nginx.site.conf templates
 if node.has_key?("phpapp") && node["phpapp"].has_key?("sites")
-  node["phpapp"]["sites"].each do |name, site|
+  node["phpapp"]["sites"].each do |key, site|
 
-    Dir.mkdir("/var/www/#{site['name']}") unless File.exists?("/var/www/#{site['name']}")
-    Dir.mkdir("/var/www/#{site['name']}/project") unless File.exists?("/var/www/#{site['name']}/project")
+    create_folder("/var/www/#{site['name']}")
 
     template "/etc/nginx/sites-available/#{site['name']}.conf" do
       source "nginx.site.conf.erb"
-      mode "0640"
+      mode "0644"
       owner "root"
       group "root"
       variables(:site => site)
