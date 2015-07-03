@@ -63,6 +63,7 @@ run_list(
     "recipe[nginx]",
     "recipe[mariadb]",
     "recipe[phpapp]",
+    "recipe[composer]",
     "recipe[drush]",
     "recipe[phing]",
 )
