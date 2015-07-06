@@ -7,9 +7,9 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   # Debian Jessie x64
   config.vm.box = "debian/jessie64"
 
-  config.vm.network :forwarded_port, host: 4567, guest: 80
+  #config.vm.network :forwarded_port, host: 4567, guest: 80
 
-  #config.vm.network "private_network", ip: "172.16.0.2"
+  config.vm.network "private_network", ip: "172.16.0.2"
   #config.vm.network "public_network", ip: "10.1.1.20"
 
   config.vm.provider "virtualbox" do |vb|

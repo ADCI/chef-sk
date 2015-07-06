@@ -7,7 +7,7 @@ default_attributes(
         "allowed" => ["vagrant"],
         "chroot" => ["vagrant"],
         "config" => {
-            "listen_address" => "172.16.0.2",
+            "listen_address" => "0.0.0.0",
         }
     },
 
@@ -64,6 +64,6 @@ run_list(
     "recipe[mariadb]",
     "recipe[phpapp]",
     "recipe[composer]",
-    "recipe[drush]",
+    "recipe[drush-wrap]",
     "recipe[phing]",
 )

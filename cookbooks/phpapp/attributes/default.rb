@@ -1,7 +1,6 @@
-default['phpapp']['default_settings'] = {}
-
 default['phpapp']['sites'] = {
     'site' => {
-        'name' => 'site'
+        'server_name' => 'site',
+        'port' => 80,
     }
 }
