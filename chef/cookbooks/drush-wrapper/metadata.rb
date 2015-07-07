@@ -1,4 +1,4 @@
-name             "drush-wrap"
+name             "drush-wrapper"
 maintainer       "Sergey Sergin (ADCI)"
 maintainer_email "sergey-sergin@kruhak.name"
 license          "All rights reserved"

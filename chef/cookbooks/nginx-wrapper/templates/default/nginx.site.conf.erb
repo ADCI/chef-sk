@@ -1,7 +1,7 @@
 server {
   listen <%= @site['port'] %>;
 
-  server_name <%= @site['server_name'] %>.local;
+  server_name <%= @site['server_name'] %>;
   access_log  /var/log/nginx/<%= @site['server_name'] %>.access.log;
 
 
