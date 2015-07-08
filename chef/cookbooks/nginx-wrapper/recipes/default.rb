@@ -19,6 +19,10 @@ end
 # Create directory /var/www.
 create_folder('/var/www')
 
+if node['nginx-wrapper']['delete_default_dir'] && File.exist?('/var/www/html')
+  FileUtils.rm_r('/var/www/html')
+end
+
 # Delete old config files.
 Dir.glob('/etc/nginx/sites-enabled/*.conf').each { |file| File.delete(file) }
 Dir.glob('/etc/nginx/sites-available/*.conf').each { |file| File.delete(file) }
