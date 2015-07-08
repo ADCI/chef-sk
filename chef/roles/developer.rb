@@ -23,26 +23,37 @@ default_attributes(
         "server_root_password" => "root",
         "remove_anonymous_users" => TRUE,
         "remove_test_database" => TRUE,
-        "tunable" => {
-            "myisam_sort_buffer_size" => "64M",
+        "mysqld" => {
             "join_buffer_size" => "2M",
             "read_buffer_size" => "2M",
+            "read_rnd_buffer_size" => "1M",
             "sort_buffer_size" => "3M",
             "table_cache" => "1024",
             "thread_cache_size" => "286",
             "wait_timeout" => "1800",
+            "max_allowed_packet" => "48M",
             "max_connect_errors" => "1000",
-            "innodb_log_file_size" => "64M"
+            "query_cache_size" => "0",
+            "query_cache_type" => "0"
+        },
+        "innodb" => {
+            "buffer_pool_size" => "128M",
+            "file_per_table" => TRUE,
+            "file_format" => "Barracuda",
+            "log_buffer_size" => "4M",
+            "log_file_size" => "128M"
         }
     },
 
     # Uncomment this lines if you want to test sending emails from a local server, prepared from the "postfix" recipe.
     "php" => {
         "directives" => {
-            "post_max_size" => "16M",
-            "upload_max_filesize" => "16M",
-            "memory_limit" => "256M",
+            "error_reporting" => "E_ALL",
+            "memory_limit" => "320M",
             "max_execution_time" => "120",
+            "max_input_vars" => "3000",
+            "post_max_size" => "100M",
+            "upload_max_filesize" => "100M",
             "display_errors" => "On",
             "html_errors" => "On",
             "display_startup_errors" => "On",
