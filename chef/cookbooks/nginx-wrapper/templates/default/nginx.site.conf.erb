@@ -5,7 +5,7 @@ server {
   access_log  /var/log/nginx/<%= @site['server_name'] %>.access.log;
 
 
-  root /var/www/<%= @site['server_name'] %>/project;
+  root /var/www/<%= @site['server_name'] %>/docroot;
   index index.php;
 
   if (!-e $request_filename) {
