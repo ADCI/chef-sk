@@ -4,7 +4,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
   # Prepare base box.
   # Debian Jessie x64
-  config.vm.box = "debian/jessie64"
+  config.vm.box = "kruhak/jessie64"
 
   # Create private network interface for communicate host and virtual machines
   config.vm.network "private_network", ip: "172.16.0.2"
