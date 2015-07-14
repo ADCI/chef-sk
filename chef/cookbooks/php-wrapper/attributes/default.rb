@@ -1,0 +1,1 @@
+default['php']['additional_packages'] = ['php5-curl']
