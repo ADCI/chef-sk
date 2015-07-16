@@ -1,5 +1,5 @@
-name "developer"
-description "Default settings for developer variant."
+name "webserver"
+description "Main webserver role"
 
 default_attributes(
 

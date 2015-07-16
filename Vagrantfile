@@ -41,7 +41,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   # Settings for Chef provisioner.
   config.vm.provision "chef_solo" do |chef|
     chef.roles_path = "chef/roles"
-    chef.add_role("developer")
+    chef.add_role("webserver")
     # chef.add_role("testing")
     # chef.add_role("integration")
 
