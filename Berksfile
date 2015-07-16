@@ -11,6 +11,7 @@ cookbook "composer", "~> 2.1.0"
 cookbook "java", "~> 1.31.0"
 cookbook "selenium", "~> 2.4.0"
 cookbook "nodejs", "~> 2.4.0"
+cookbook "jenkins", "~> 2.3.0"
 
 cookbook "vsftpd", github: "TheSerapher/chef-vsftpd", tag: "v0.2.1"
 cookbook "drush", github: "msonnabaum/chef-drush"
