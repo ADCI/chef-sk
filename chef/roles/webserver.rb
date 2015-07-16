@@ -21,10 +21,7 @@ default_attributes(
 
     "nginx" => {
         "default_site_enabled" => FALSE,
-
-        # This will limit post_max_size and upload_max_filesize.
-        # Default value is 1M. Infinite value is 0.
-        "client_max_body_size" => "16M"
+        "client_max_body_size" => "64M"
     },
 
     "mariadb" => {
@@ -53,7 +50,6 @@ default_attributes(
         }
     },
 
-    # Uncomment this lines if you want to test sending emails from a local server, prepared from the "postfix" recipe.
     "php" => {
         "directives" => {
             "error_reporting" => "E_ALL",
@@ -67,7 +63,8 @@ default_attributes(
             "display_startup_errors" => "On",
             "SMTP" => "localhost.localdomain",
             "sendmail_from" => "vagrant@localhost.localdomain"
-        }
+        },
+        "additional_packages" => ["php5-curl", "imagemagick"]
     }
 )
 
