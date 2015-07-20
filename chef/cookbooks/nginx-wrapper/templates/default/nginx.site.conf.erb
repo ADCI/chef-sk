@@ -1,11 +1,15 @@
 server {
-  listen <%= @site['port'] %>;
+  listen <%= @site['port'] || 80 %>;
 
   server_name <%= @site['server_name'] %>;
   access_log  /var/log/nginx/<%= @site['server_name'] %>.access.log;
 
-
+  <% if @site['root'] %>
+  root <%= @site['root'] %>;
+  <% else %>
   root /var/www/<%= @site['server_name'] %>/docroot;
+  <% end %>
+
   index index.php;
 
   if (!-e $request_filename) {
