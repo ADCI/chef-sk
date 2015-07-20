@@ -28,6 +28,7 @@ end
 if node['nginx-wrapper']['delete_default_dir']
   directory '/var/www/html' do
     action :delete
+    recursive true
   end
 end
 
