@@ -3,14 +3,6 @@ description "Main webserver role"
 
 default_attributes(
 
-    "java" => {
-        "install_flavor" => "oracle",
-        "jdk_version" => "7",
-        "oracle" => {
-            "accept_oracle_download_terms" => true
-        }
-    },
-
     "vsftpd" => {
         "allowed" => ["vagrant"],
         "chroot" => ["vagrant"],
@@ -85,7 +77,6 @@ run_list(
     "recipe[apt]",
     "recipe[git]",
     "recipe[vsftpd]",
-    "recipe[java]",
     "recipe[php]",
     "recipe[php::module_gd]",
     "recipe[php::module_mysql]",
