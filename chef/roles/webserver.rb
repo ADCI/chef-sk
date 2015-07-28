@@ -59,18 +59,6 @@ default_attributes(
         "additional_packages" => ["php5-curl", "imagemagick"]
     },
 
-    "xdebug" => {
-        "config_file" => "/etc/php5/fpm/conf.d/20-xdebug.ini",
-        "web_server" => {
-            "service_name" => "php-fpm",
-        },
-        "directives" => {
-            "remote_autostart" => 1,
-            "remote_connect_back" => 1,
-            "remote_enable" => 1,
-            "remote_log" => "/tmp/xdebug-remote.log"
-        }
-    }
 )
 
 run_list(
