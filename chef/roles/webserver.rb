@@ -59,6 +59,18 @@ default_attributes(
         "additional_packages" => ["php5-curl", "imagemagick"]
     },
 
+=begin
+
+    "nginx-wrapper" => {
+        "sites" => {
+            "site" => {
+                "server_name" => "site.local"
+            }
+        }
+    }
+
+=end
+
 )
 
 run_list(
