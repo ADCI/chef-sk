@@ -31,12 +31,16 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     # Set hostname for virtual machine
     config.vm.hostname = "vagrant.local"
 
-     config.hostsupdater.aliases = []
-    end
+    config.hostsupdater.aliases = []
+  end
 =end
 
   # Install latest Chef via omnibus plugin.
   config.omnibus.chef_version = :latest
+
+  # Set file destination for Berksfile
+  config.berkshelf.berksfile_path = "chef/Berksfile"
+  config.berkshelf.enabled = true
 
   # Settings for Chef provisioner.
   config.vm.provision "chef_solo" do |chef|
