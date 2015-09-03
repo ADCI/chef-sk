@@ -59,8 +59,6 @@ default_attributes(
         "additional_packages" => ["php5-curl", "imagemagick"]
     },
 
-=begin
-
     "nginx-wrapper" => {
         "sites" => {
             "site" => {
@@ -68,9 +66,6 @@ default_attributes(
             }
         }
     }
-
-=end
-
 )
 
 run_list(
@@ -80,12 +75,11 @@ run_list(
     "recipe[php]",
     "recipe[php::module_gd]",
     "recipe[php::module_mysql]",
+    "recipe[php-wrapper]",
+    "recipe[xdebug]",
     "recipe[mariadb]",
     "recipe[composer]",
-    "recipe[php-wrapper]",
-    "recipe[php-fpm-wrapper]",
     "recipe[drush-wrapper]",
     "recipe[phing-wrapper]",
     "recipe[nginx-wrapper]",
-    "recipe[xdebug]",
 )
