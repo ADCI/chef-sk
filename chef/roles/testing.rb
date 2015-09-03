@@ -2,15 +2,6 @@ name "testing"
 description "Additional testing utils"
 
 default_attributes(
-
-    "java" => {
-        "install_flavor" => "oracle",
-        "jdk_version" => "7",
-        "oracle" => {
-            "accept_oracle_download_terms" => true
-        }
-    },
-
     "nodejs" => {
         "install_method" => "binary",
         "binary" => {
@@ -33,8 +24,9 @@ default_attributes(
 )
 
 run_list(
-    "recipe[java]",
+    "recipe[jenkins::java]",
     "recipe[phantomjs]",
     "recipe[nodejs]",
     "recipe[selenium-wrapper]",
+    "recipe[jenkins::master]",
 )
