@@ -59,6 +59,7 @@ default_attributes(
         "additional_packages" => ["php5-curl", "imagemagick"]
     },
 
+=begin
     "nginx-wrapper" => {
         "sites" => {
             "site" => {
@@ -66,6 +67,8 @@ default_attributes(
             }
         }
     }
+=end
+
 )
 
 run_list(
