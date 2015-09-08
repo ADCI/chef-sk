@@ -24,6 +24,7 @@ default_attributes(
 )
 
 run_list(
+    "recipe[apt]",
     "recipe[jenkins::java]",
     "recipe[phantomjs]",
     "recipe[nodejs]",

@@ -81,11 +81,7 @@ run_list(
     "recipe[php::module_gd]",
     "recipe[php::module_mysql]",
     "recipe[mariadb]",
-    "recipe[composer]",
     "recipe[php-wrapper]",
     "recipe[php-fpm-wrapper]",
-    "recipe[drush-wrapper]",
-    "recipe[phing-wrapper]",
     "recipe[nginx-wrapper]",
-    "recipe[xdebug]",
 )
