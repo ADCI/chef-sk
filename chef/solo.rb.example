@@ -1,0 +1,3 @@
+cookbook_path "/home/vagrant/chef/cookbooks"
+role_path "/home/vagrant/chef/roles"
+json_attribs "/home/vagrant/chef/solo.json"
