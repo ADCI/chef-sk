@@ -9,10 +9,10 @@
 
 include_recipe "nginx"
 
-# Add Vagrant user to www-data group
+# Add user to www-data group
 group node['nginx']['group'] do
   action :modify
-  members 'vagrant'
+  members node['nginx-wrapper']['user']
   append true
 end
 
