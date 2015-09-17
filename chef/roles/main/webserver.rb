@@ -3,14 +3,6 @@ description "Main webserver role"
 
 default_attributes(
 
-    "vsftpd" => {
-        "allowed" => ["vagrant"],
-        "chroot" => ["vagrant"],
-        "config" => {
-            "listen_address" => "0.0.0.0",
-        }
-    },
-
     "nginx" => {
         "default_site_enabled" => FALSE,
         "client_max_body_size" => "64M"
@@ -59,29 +51,16 @@ default_attributes(
         "additional_packages" => ["php5-curl", "imagemagick"]
     },
 
-=begin
-
-    "nginx-wrapper" => {
-        "sites" => {
-            "site" => {
-                "server_name" => "site.local"
-            }
-        }
-    }
-
-=end
-
 )
 
 run_list(
     "recipe[apt]",
     "recipe[git]",
-    "recipe[vsftpd]",
     "recipe[php]",
     "recipe[php::module_gd]",
     "recipe[php::module_mysql]",
     "recipe[mariadb]",
     "recipe[php-wrapper]",
     "recipe[php-fpm-wrapper]",
-    "recipe[nginx-wrapper]",
+    "recipe[nginx]"
 )

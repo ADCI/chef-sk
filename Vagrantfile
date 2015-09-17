@@ -19,6 +19,9 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 1024
 
+    # Virtual machine name
+    #vb.name = "projectname"
+
     # Improve network performance
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
@@ -26,14 +29,13 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
   # Enable vagrant-hostsupdater support, if the plugin is installed
   # see https://github.com/cogitatio/vagrant-hostsupdater for details
-=begin
   if Vagrant.has_plugin?("vagrant-hostsupdater")
     # Set hostname for virtual machine
-    config.vm.hostname = "vagrant.local"
+    config.vm.hostname = "site.local"
 
     config.hostsupdater.aliases = []
   end
-=end
+
 
   # Install latest Chef via omnibus plugin.
   config.omnibus.chef_version = :latest
@@ -44,10 +46,10 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
   # Settings for Chef provisioner.
   config.vm.provision "chef_solo" do |chef|
-    chef.roles_path = "chef/roles"
-    chef.add_role("webserver")
-    chef.add_role("developer")
-    # chef.add_role("testing")
+    chef.roles_path = ["chef/roles/main", "chef/roles/project"]
+
+    # Local environment role
+    chef.add_role("local")
 
     # You can manually add cookbook files if vagrant-berkshelf plugin is not installed
     # chef.cookbooks_path = "chef/cookbooks"
