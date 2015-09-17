@@ -29,8 +29,9 @@
 
  1. Install Chef (you can use Debian repository, omnibus installer or any other installer source)
  2. Install chef-dk
- 3. Copy "chef" folder to your server
+ 3. Copy repository to your server
  4. Vendor cookbooks from Berksfile to cookbooks folder (``` berks vendor <cookbooks_path> ```)
+ 5. Create production role (production.rb)
  5. Create solo.rb and solo.json files (you can use examples from "chef" folder)
     Please note: you can use only absolute paths in solo.rb file
  6. Run chef-solo (``` sudo chef-solo -c solo.rb ```)
