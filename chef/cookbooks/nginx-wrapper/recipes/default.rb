@@ -10,10 +10,12 @@
 include_recipe "nginx"
 
 # Add user to www-data group
-group node['nginx']['group'] do
-  action :modify
-  members node['nginx-wrapper']['user']
-  append true
+if node['nginx-wrapper']['user']
+  group node['nginx']['group'] do
+    action :modify
+    members node['nginx-wrapper']['user']
+    append true
+  end
 end
 
 # Create directory /var/www.
@@ -24,7 +26,7 @@ directory '/var/www' do
   action :create
 end
 
-# Delete /var/www/html @TODO who create?
+# Delete /var/www/html
 if node['nginx-wrapper']['delete_default_dir']
   directory '/var/www/html' do
     action :delete
