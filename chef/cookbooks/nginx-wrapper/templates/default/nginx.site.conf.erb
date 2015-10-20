@@ -10,7 +10,7 @@ server {
   root /var/www/<%= @site['server_name'] %>/docroot;
   <% end %>
 
-  index index.php;
+  index <%= @site['port'] || 'index.php' %>;
 
   if (!-e $request_filename) {
     rewrite  ^/(.*)$  /index.php?q=$1  last;
