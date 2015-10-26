@@ -51,6 +51,15 @@ default_attributes(
         "additional_packages" => ["php5-curl", "imagemagick"]
     },
 
+    "php-fpm" => {
+        "pools" => {
+            "www" => {
+                :enable => true,
+                "process_manager" => "static",
+            }
+        }
+    },
+
 )
 
 run_list(
