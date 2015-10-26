@@ -5,15 +5,20 @@ default_attributes(
     "nodejs" => {
         "install_method" => "binary",
         "binary" => {
-          "checksum" => "0a861a6ded50c8cda32ac39c3a54699c767742e6",
+          "checksum" => "e766e387934e17daaad92d0460ed76f756655da62b627a5c9cc07faea4a0b824",
         },
-        "version" => "0.12.7",
-        "npm_packages" => [
+        "version" => "4.2.1",
+    },
+
+    "nodejs-wrapper" => {
+        "packages" => [
             {
-                "name" => "webdriverio"
+                "name" => "webdriverio",
+                "bin_name" => "wdio",
             },
             {
-                "name" => "mocha"
+                "name" => "mocha",
+                "bin_name" => "mocha",
             }
         ]
     },
