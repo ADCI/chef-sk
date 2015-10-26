@@ -11,6 +11,7 @@ default_attributes(
     },
 
     "nginx-wrapper" => {
+        "user" => "vagrant",
         "sites" => {
             "site" => {
                 "server_name" => "site.local"
