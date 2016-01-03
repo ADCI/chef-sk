@@ -32,7 +32,6 @@ run_list(
     "recipe[apt]",
     "recipe[jenkins::java]",
     "recipe[phantomjs]",
-    "recipe[nodejs-wrapper]",
     "recipe[selenium-wrapper]",
     "recipe[jenkins::master]",
 )
