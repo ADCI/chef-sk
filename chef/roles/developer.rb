@@ -24,7 +24,7 @@ run_list(
     "recipe[apt]",
     "recipe[composer]",
     "recipe[drush-wrapper]",
-    "recipe[phing-wrapper]",
+    "recipe[phing]",
     "recipe[xdebug]",
     "recipe[nodejs-wrapper]",
 )
