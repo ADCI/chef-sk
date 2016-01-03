@@ -1,44 +1,67 @@
 server {
+
   listen <%= @site['port'] || 80 %>;
 
   server_name <%= @site['server_name'] %>;
-  access_log  /var/log/nginx/<%= @site['server_name'] %>.access.log;
 
-  <% if @site['root'] %>
+<% if @site['root'] %>
   root <%= @site['root'] %>;
-  <% else %>
+<% else %>
   root /var/www/<%= @site['server_name'] %>/docroot;
-  <% end %>
+<% end %>
 
   index <%= @site['index'] || 'index.php' %>;
 
-  if (!-e $request_filename) {
-    rewrite  ^/(.*)$  /index.php?q=$1  last;
-    break;
+  error_log <%= node['nginx']['log_dir'] %>/<%= @site['server_name'] %>.error.log;
+  access_log <%= node['nginx']['log_dir'] %>/<%= @site['server_name'] %>.access.log;
+
+  location = /favicon.ico {
+    log_not_found off;
+    access_log off;
   }
 
-  location ~ (\.php)$ {
+  location = /robots.txt {
+    allow all;
+    log_not_found off;
+    access_log off;
+  }
+
+  location ~ \.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\..*|Entries.*|Repository|Root|Tag|Template)$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig\.save)$ {
+    return 403;
+  }
+
+  location ~ ^/sites/.*/private/ {
+    return 403;
+  }
+
+  location ~ (^|/)\. {
+    return 403;
+  }
+
+  location / {
+    try_files $uri /index.php?$query_string;
+  }
+
+  location @rewrite {
+    rewrite ^/(.*)$ /index.php?q=$1;
+  }
+
+  location ~ '\.php$|^/update.php' {
+    fastcgi_split_path_info ^(.+?\.php)(|/.*)$;
+    #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
     include fastcgi.conf;
-    fastcgi_index index.php;
-    fastcgi_connect_timeout 60;
-    fastcgi_send_timeout 180;
-    fastcgi_read_timeout 180;
-    fastcgi_buffer_size 128k;
-    fastcgi_buffers 4 256k;
-    fastcgi_busy_buffers_size 256k;
-    fastcgi_temp_file_write_size 256k;
+    fastcgi_param SCRIPT_FILENAME $request_filename;
     fastcgi_intercept_errors on;
     fastcgi_pass unix:/var/run/php-fpm-www.sock;
   }
 
-  ## Images and static content is treated different
-  location ~* ^.+.(jpg|jpeg|gif|css|png|js|ico|xml)$ {
-    access_log        off;
-    expires           30d;
+  location ~ ^/sites/.*/files/styles/ {
+    try_files $uri @rewrite;
   }
 
-  ## Disable viewing .htaccess & .htpassword
-  location ~ /\.ht {
-    deny  all;
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+    expires max;
+    log_not_found off;
   }
+
 }
