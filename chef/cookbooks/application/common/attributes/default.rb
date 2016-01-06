@@ -1,0 +1,1 @@
+default['common']['packages'] = %w(htop mc)

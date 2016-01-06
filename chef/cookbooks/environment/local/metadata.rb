@@ -1,0 +1,12 @@
+name             'local'
+maintainer       'Sergey Sergin (ADCI)'
+maintainer_email 'sergey-sergin@kruhak.name'
+license          'MIT'
+description      'Local environment cookbook'
+version          '1.0'
+
+depends 'common'
+depends 'webserver'
+depends 'developer'
+depends 'testing'
+depends 'vsftpd'

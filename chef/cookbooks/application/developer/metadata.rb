@@ -1,0 +1,13 @@
+name             'developer'
+maintainer       'Sergey Sergin (ADCI)'
+maintainer_email 'sergey-sergin@kruhak.name'
+license          'MIT'
+description      'Developer application (role) cookbook'
+version          '1.0'
+
+depends 'common'
+depends 'composer'
+depends 'phing'
+depends 'xdebug'
+depends 'drush-wrapper'
+depends 'nodejs-wrapper'

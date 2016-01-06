@@ -1,3 +1,2 @@
-cookbook_path "/root/<repository>/chef/cookbooks"
-role_path "/root/<repository>/chef/roles"
+cookbook_path "/root/<repository>/chef/cookbooks/vendor"
 json_attribs "/root/<repository>/chef/solo.json"
