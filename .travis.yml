@@ -1,0 +1,20 @@
+language: ruby
+
+rvm:
+  - 2.1.1
+
+install:
+  - sudo apt-get update -q
+  - sudo apt-get install -q virtualbox --fix-missing
+  - sudo wget -nv https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.10.0-1_amd64.deb
+  - sudo dpkg -i chefdk_0.10.0-1_amd64.deb
+  - sudo wget -nv https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
+  - sudo dpkg -i vagrant_1.8.1_x86_64.deb
+  - sudo vagrant plugin install vagrant-omnibus
+  - sudo vagrant plugin install vagrant-berkshelf
+  - sudo gem install rake
+  - sudo gem install serverspec
+
+script:
+  - 'vagrant up'
+  - 'rake spec'
