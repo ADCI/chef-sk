@@ -3,6 +3,9 @@ language: ruby
 rvm:
   - 2.1.1
 
+env:
+  - VAGRANT_HOME=$TRAVIS_BUILD_DIR/.vagrant.d
+
 install:
   - sudo apt-get update -q
   - sudo apt-get install -q virtualbox --fix-missing
@@ -14,7 +17,6 @@ install:
   - sudo vagrant plugin install vagrant-berkshelf
   - gem install rake
   - gem install serverspec
-  - sudo chmod -R 777 /home/travis/.vagrant.d
 
 script:
   - 'vagrant up'
