@@ -5,7 +5,6 @@ include_recipe 'apt'
 include_recipe 'git'
 
 # Install common utilities
-
 node['common']['packages'].each do |package_name|
   package package_name do
     action :install

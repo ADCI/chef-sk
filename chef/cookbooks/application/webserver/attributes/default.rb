@@ -21,20 +21,21 @@ default['mariadb']['server_root_password'] = 'root'
 default['mariadb']['remove_anonymous_users'] = TRUE
 default['mariadb']['remove_test_database'] = TRUE
 
-default['mariadb']['mysqld']['join_buffer_size'] = '2M'
 default['mariadb']['mysqld']['read_buffer_size'] = '2M'
 default['mariadb']['mysqld']['read_rnd_buffer_size'] = '1M'
 default['mariadb']['mysqld']['sort_buffer_size'] = '3M'
-default['mariadb']['mysqld']['table_cache'] = '1024'
-default['mariadb']['mysqld']['thread_cache_size'] = '286'
 default['mariadb']['mysqld']['wait_timeout'] = '1800'
 default['mariadb']['mysqld']['max_allowed_packet'] = '48M'
-default['mariadb']['mysqld']['max_connect_errors'] = '1000'
 default['mariadb']['mysqld']['query_cache_size'] = '0'
 default['mariadb']['mysqld']['query_cache_type'] = '0'
+default['mariadb']['mysqld']['max_connections'] = '1000'
+default['mariadb']['mysqld']['thread_cache_size'] = '286'
+default['mariadb']['mysqld']['options']['join_buffer_size'] = '2M'
+default['mariadb']['mysqld']['options']['table_cache'] = '1024'
+default['mariadb']['mysqld']['options']['max_connect_errors'] = '1000'
 
 default['mariadb']['innodb']['buffer_pool_size'] = '128M'
-default['mariadb']['innodb']['file_format'] = 'Barracuda'
 default['mariadb']['innodb']['file_per_table'] = TRUE
 default['mariadb']['innodb']['log_buffer_size'] = '4M'
 default['mariadb']['innodb']['log_file_size'] = '128M'
+default['mariadb']['innodb']['options']['innodb_file_format'] = 'Barracuda'
