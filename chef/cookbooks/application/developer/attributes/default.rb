@@ -8,6 +8,10 @@ default['nodejs']['version'] = '4.2.4'
 
 default['nodejs-wrapper']['packages'] = [
     {
+        'name' => 'npm',
+        'bin_name' => 'npm',
+    },
+    {
         'name' => 'gulp',
         'bin_name' => 'gulp',
     }
