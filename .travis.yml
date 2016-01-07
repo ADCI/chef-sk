@@ -12,8 +12,8 @@ install:
   - sudo dpkg -i vagrant_1.8.1_x86_64.deb
   - sudo vagrant plugin install vagrant-omnibus
   - sudo vagrant plugin install vagrant-berkshelf
-  - sudo gem install rake
-  - sudo gem install serverspec
+  - gem install rake
+  - gem install serverspec
 
 script:
   - 'vagrant up'
