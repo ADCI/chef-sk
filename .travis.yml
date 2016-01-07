@@ -14,7 +14,6 @@ install:
   - sudo vagrant plugin install vagrant-berkshelf
   - gem install rake
   - gem install serverspec
-  - sudo mkdir /home/travis/.vagrant.d
   - sudo chmod -R 777 /home/travis/.vagrant.d
 
 script:
