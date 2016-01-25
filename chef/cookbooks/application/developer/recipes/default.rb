@@ -7,9 +7,6 @@ include_recipe 'composer'
 # Drush
 include_recipe 'drush-wrapper'
 
-# Phing
-include_recipe 'phing'
-
 # Xdebug
 include_recipe 'xdebug'
 

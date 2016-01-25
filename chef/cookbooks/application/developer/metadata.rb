@@ -7,7 +7,6 @@ version          '1.0'
 
 depends 'common'
 depends 'composer'
-depends 'phing'
 depends 'xdebug'
 depends 'drush-wrapper'
 depends 'nodejs-wrapper'

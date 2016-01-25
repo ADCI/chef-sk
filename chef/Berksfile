@@ -13,7 +13,6 @@ cookbook "jenkins", "~> 2.3.0"
 cookbook "vsftpd", github: "TheSerapher/chef-vsftpd", tag: "v0.2.1"
 cookbook "drush", github: "msonnabaum/chef-drush"
 cookbook "phantomjs", github: "customink-webops/phantomjs"
-cookbook "phing", github: "kruhak/chef-phing"
 
 cookbook "php-wrapper", path: "cookbooks/custom/php-wrapper"
 cookbook "drush-wrapper", path: "cookbooks/custom/drush-wrapper"

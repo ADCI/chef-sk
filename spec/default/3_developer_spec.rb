@@ -8,10 +8,6 @@ describe command('drush version') do
   its(:stdout) { should match /Drush Version   :  8./ }
 end
 
-describe command('phing -v') do
-  its(:stdout) { should match /Phing 2./ }
-end
-
 describe 'Xdebug' do
 
   context package('php5-xdebug') do
