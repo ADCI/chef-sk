@@ -5,4 +5,4 @@ include_recipe 'developer'
 #include_recipe 'testing'
 
 # Include local-only cookbooks
-include_recipe 'vsftpd'
+#include_recipe 'vsftpd'

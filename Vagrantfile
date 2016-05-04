@@ -3,8 +3,8 @@ VAGRANT_API_VERSION = 2
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
   # Prepare base box.
-  # Debian Jessie x64
-  config.vm.box = 'bento/debian-8.2'
+  # Ubuntu Xenial 16.04 x64
+  config.vm.box = 'geerlingguy/ubuntu1604'
 
   # Create private network interface for communicate host and virtual machines
   config.vm.network 'private_network', ip: '172.16.0.2'

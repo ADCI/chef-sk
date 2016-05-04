@@ -10,6 +10,28 @@ default['php']['directives']['html_errors'] = 'On'
 default['php']['directives']['display_startup_errors'] = 'On'
 default['php']['directives']['SMTP'] = 'localhost.localdomain'
 default['php']['directives']['sendmail_from'] = 'vagrant@localhost.localdomain'
+
+default['php']['version'] = '7.0'
+default['php']['conf_dir'] = '/etc/php/7.0/cli'
+default['php']['packages'] = [
+    'php7.0-cgi',
+    'php7.0',
+    'php7.0-dev',
+    'php7.0-cli',
+    'php7.0-json',
+    'php7.0-curl',
+    'php-pear',
+    'php-mysql',
+    'php-gd',
+    'php-mcrypt',
+    'php-zip'
+]
+default['php']['mysql']['package'] = 'php7.0-mysql'
+default['php']['fpm_package'] = 'php7.0-fpm'
+default['php']['fpm_pooldir'] = '/etc/php/7.0/fpm/pool.d'
+default['php']['fpm_service'] = 'php7.0-fpm'
+default['php']['fpm_default_conf'] = '/etc/php/7.0/fpm/pool.d/www.conf'
+
 default['php']['additional_packages'] = %w(php5-curl imagemagick php5-gd php5-mysql)
 
 # Nginx

@@ -1,4 +1,4 @@
-package 'php5-xdebug' do
+package 'php-xdebug' do
   action :install
 end
 
