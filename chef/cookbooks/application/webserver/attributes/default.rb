@@ -23,6 +23,7 @@ default['php']['packages'] = [
     'php-pear',
     'php-mysql',
     'php-gd',
+    'php-mbstring',
     'php-mcrypt',
     'php-zip'
 ]

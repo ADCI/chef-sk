@@ -7,9 +7,5 @@ default['nodejs-wrapper']['packages'] = [
     {
         'name' => 'npm',
         'bin_name' => 'npm',
-    },
-    {
-        'name' => 'gulp',
-        'bin_name' => 'gulp',
     }
 ]

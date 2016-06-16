@@ -1,2 +1,2 @@
 default['drush']['install_method'] = "git"
-default['drush']['version'] = "8.0.1"
+default['drush']['version'] = "8.1.2"
